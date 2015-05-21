@@ -13,8 +13,9 @@ except ImportError:
     from distutils.core import setup
 
 
-with open('requirements.txt') as f:
-    requires = [line.strip() for line in f]
+def get_requirements():
+    with open('requirements.txt') as f:
+        return [line.strip() for line in f]
 
 setup(
     name='PyBal',
@@ -43,7 +44,7 @@ setup(
     scripts=(
         'scripts/pybal',
     ),
-    requires=requires,
+    requires=get_requirements(),
     test_suite='pybal.test',
     zip_safe=False,
 )
